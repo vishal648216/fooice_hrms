@@ -1,0 +1,30 @@
+# Dependencies
+**/node_modules/
+**/vendor/
+
+# Next.js
+hrms/.next/
+hrms/out/
+hrms/.vercel
+hrms/*.tsbuildinfo
+hrms/next-env.d.ts
+
+# Laravel
+hrms-api/.env
+hrms-api/.env.backup
+hrms-api/.env.production
+hrms-api/public/storage
+hrms-api/storage/*.key
+hrms-api/storage/logs/*.log
+hrms-api/storage/framework/cache/data/*
+hrms-api/storage/framework/sessions/*
+hrms-api/storage/framework/views/*
+
+# Testing & Cache
+.phpunit.result.cache
+.phpunit.cache
+
+# Misc & OS files
+*.log
+.DS_Store
+Thumbs.db
