@@ -2,6 +2,7 @@ FROM php:8.2-cli
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
+    ca-certificates \
     git \
     curl \
     libpng-dev \
@@ -10,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     zip \
     unzip \
+    && update-ca-certificates \
     && docker-php-ext-install pdo_mysql mbstring bcmath gd zip pcntl
 
 # Get latest Composer
@@ -29,4 +31,4 @@ RUN chmod -R 777 storage bootstrap/cache
 ENV PORT=8000
 EXPOSE 8000
 
-CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
+CMD ["sh", "-c", "php artisan config:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
